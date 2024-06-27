@@ -15,11 +15,22 @@ namespace App\Models{
 /**
  * 
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
+ * @method static \Database\Factories\EmployerFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Employer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Employer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Employer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Employer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Employer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Employer whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Employer whereUpdatedAt($value)
  */
-	class Comment extends \Eloquent {}
+	class Employer extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -27,15 +38,20 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $employer_id
  * @property string $title
  * @property string $salary
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Employer|null $employer
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
+ * @property-read int|null $tags_count
  * @method static \Database\Factories\JobFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Job newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job query()
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereEmployerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereTitle($value)
@@ -49,20 +65,21 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string $title
- * @property string $body
+ * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Post query()
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
+ * @method static \Database\Factories\TagFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
  */
-	class Post extends \Eloquent {}
+	class Tag extends \Eloquent {}
 }
 
 namespace App\Models{
