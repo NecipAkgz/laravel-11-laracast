@@ -36,7 +36,7 @@ class JobController extends Controller {
 
         $job = Job::create([...$validated, 'employer_id' => 1]);
 
-        Mail::to($job->employer->user)->send(new JobPosted($job));
+        Mail::to($job->employer->user)->queue(new JobPosted($job));
     }
 
     public function edit(Job $job) {
