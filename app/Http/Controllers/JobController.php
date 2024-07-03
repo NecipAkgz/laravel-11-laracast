@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller {
     public function index() {
@@ -34,24 +36,17 @@ class JobController extends Controller {
     }
 
     public function edit(Job $job) {
-        return view('jobs.edit', [
-            'job' => $job
-        ]);
+        return view('jobs.edit', ['job' => $job]);
     }
 
     public function update(Job $job) {
-        // validate
         $validated = request()->validate([
             'title'  => 'required|min:3|max:255',
             'salary' => 'required|min:3|max:255',
         ]);
 
-        // authorize
-
-        // update
         $job->update($validated);
 
-        // redirect
         return redirect('/jobs/' . $job->id)->with('success', 'Job updated');
     }
 
